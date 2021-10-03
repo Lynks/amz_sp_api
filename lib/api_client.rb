@@ -233,7 +233,16 @@ module AmzSpApi
         end
       else
         # models, e.g. Pet
-        AmzSpApi.constants.map{|c| AmzSpApi.const_get(c)}.select{|sub| sub.kind_of?(Module)}.detect{|sub| sub.const_defined?(return_type)}.const_get(return_type).build_from_hash(data)
+        # AmzSpApi.constants.map{|c| AmzSpApi.const_get(c)}.select{|sub| sub.kind_of?(Module)}.detect{|sub| sub.const_defined?(return_type)}.const_get(return_type).build_from_hash(data)
+        res_type = nil
+        AmzSpApi.constants.map{|c| AmzSpApi.const_get(c)}.select{|sub| sub.kind_of?(Module)}.detect do |sub|
+          begin
+            res_type = sub.const_get(return_type).build_from_hash(data)
+          rescue => exception
+            false
+          end
+        end
+        res_type
       end
     end
 
