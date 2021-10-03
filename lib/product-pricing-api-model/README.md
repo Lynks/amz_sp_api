@@ -60,7 +60,8 @@ marketplace_id = 'marketplace_id_example' # String | A marketplace identifier. S
 item_type = 'item_type_example' # String | Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku.
 opts = { 
   asins: ['asins_example'], # Array<String> | A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
-  skus: ['skus_example'] # Array<String> | A list of up to twenty seller SKU values used to identify items in the given marketplace.
+  skus: ['skus_example'], # Array<String> | A list of up to twenty seller SKU values used to identify items in the given marketplace.
+  customer_type: 'customer_type_example' # String | Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer.
 }
 
 begin
@@ -74,10 +75,12 @@ api_instance = AmzSpApi::ProductPricingApiModel::ProductPricingApi.new
 marketplace_id = 'marketplace_id_example' # String | A marketplace identifier. Specifies the marketplace for which prices are returned.
 item_condition = 'item_condition_example' # String | Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
 asin = 'asin_example' # String | The Amazon Standard Identification Number (ASIN) of the item.
-
+opts = { 
+  customer_type: 'customer_type_example' # String | Indicates whether to request Consumer or Business offers. Default is Consumer.
+}
 
 begin
-  result = api_instance.get_item_offers(marketplace_id, item_condition, asin)
+  result = api_instance.get_item_offers(marketplace_id, item_condition, asin, opts)
   p result
 rescue AmzSpApi::ProductPricingApiModel::ApiError => e
   puts "Exception when calling ProductPricingApi->get_item_offers: #{e}"
@@ -87,10 +90,12 @@ api_instance = AmzSpApi::ProductPricingApiModel::ProductPricingApi.new
 marketplace_id = 'marketplace_id_example' # String | A marketplace identifier. Specifies the marketplace for which prices are returned.
 item_condition = 'item_condition_example' # String | Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
 seller_sku = 'seller_sku_example' # String | Identifies an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.
-
+opts = { 
+  customer_type: 'customer_type_example' # String | Indicates whether to request Consumer or Business offers. Default is Consumer.
+}
 
 begin
-  result = api_instance.get_listing_offers(marketplace_id, item_condition, seller_sku)
+  result = api_instance.get_listing_offers(marketplace_id, item_condition, seller_sku, opts)
   p result
 rescue AmzSpApi::ProductPricingApiModel::ApiError => e
   puts "Exception when calling ProductPricingApi->get_listing_offers: #{e}"
@@ -102,7 +107,8 @@ item_type = 'item_type_example' # String | Indicates whether ASIN values or sell
 opts = { 
   asins: ['asins_example'], # Array<String> | A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
   skus: ['skus_example'], # Array<String> | A list of up to twenty seller SKU values used to identify items in the given marketplace.
-  item_condition: 'item_condition_example' # String | Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
+  item_condition: 'item_condition_example', # String | Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
+  offer_type: 'offer_type_example' # String | Indicates whether to request pricing information for the seller's B2C or B2B offers. Default is B2C.
 }
 
 begin
@@ -150,6 +156,7 @@ Class | Method | HTTP request | Description
  - [AmzSpApi::ProductPricingApiModel::NumberOfOfferListingsList](docs/NumberOfOfferListingsList.md)
  - [AmzSpApi::ProductPricingApiModel::NumberOfOffers](docs/NumberOfOffers.md)
  - [AmzSpApi::ProductPricingApiModel::OfferCountType](docs/OfferCountType.md)
+ - [AmzSpApi::ProductPricingApiModel::OfferCustomerType](docs/OfferCustomerType.md)
  - [AmzSpApi::ProductPricingApiModel::OfferDetail](docs/OfferDetail.md)
  - [AmzSpApi::ProductPricingApiModel::OfferDetailList](docs/OfferDetailList.md)
  - [AmzSpApi::ProductPricingApiModel::OfferListingCountType](docs/OfferListingCountType.md)
@@ -159,7 +166,10 @@ Class | Method | HTTP request | Description
  - [AmzSpApi::ProductPricingApiModel::Price](docs/Price.md)
  - [AmzSpApi::ProductPricingApiModel::PriceList](docs/PriceList.md)
  - [AmzSpApi::ProductPricingApiModel::PriceType](docs/PriceType.md)
+ - [AmzSpApi::ProductPricingApiModel::PrimeInformationType](docs/PrimeInformationType.md)
  - [AmzSpApi::ProductPricingApiModel::Product](docs/Product.md)
+ - [AmzSpApi::ProductPricingApiModel::QuantityDiscountPriceType](docs/QuantityDiscountPriceType.md)
+ - [AmzSpApi::ProductPricingApiModel::QuantityDiscountType](docs/QuantityDiscountType.md)
  - [AmzSpApi::ProductPricingApiModel::RelationshipList](docs/RelationshipList.md)
  - [AmzSpApi::ProductPricingApiModel::SalesRankList](docs/SalesRankList.md)
  - [AmzSpApi::ProductPricingApiModel::SalesRankType](docs/SalesRankType.md)
