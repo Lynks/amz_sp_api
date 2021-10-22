@@ -148,7 +148,7 @@ module AmzSpApi::FeedsApiModel
         fail ArgumentError, "Missing the required parameter 'body' when calling FeedsApi.create_feed_document"
       end
       # resource path
-      local_var_path = '/feeds/2021-06-30/documents'
+      local_var_path = '/feeds/2020-09-04/documents'
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -258,7 +258,7 @@ module AmzSpApi::FeedsApiModel
         fail ArgumentError, "Missing the required parameter 'feed_document_id' when calling FeedsApi.get_feed_document"
       end
       # resource path
-      local_var_path = '/feeds/2021-06-30/documents/{feedDocumentId}'.sub('{' + 'feedDocumentId' + '}', feed_document_id.to_s)
+      local_var_path = '/feeds/2020-09-04/documents/{feedDocumentId}'.sub('{' + 'feedDocumentId' + '}', feed_document_id.to_s)
 
       # query parameters
       query_params = opts[:query_params] || {}

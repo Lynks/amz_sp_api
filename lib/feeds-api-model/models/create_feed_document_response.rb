@@ -14,14 +14,14 @@ require 'date'
 module AmzSpApi::FeedsApiModel
   # The response for the createFeedDocument operation.
   class CreateFeedDocumentResponse
-    attr_accessor :feeds
+    attr_accessor :payload
 
     attr_accessor :errors
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'feeds' => :'feeds',
+        :'payload' => :'payload',
         :'errors' => :'errors'
       }
     end
@@ -29,7 +29,7 @@ module AmzSpApi::FeedsApiModel
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'feeds' => :'Object',
+        :'payload' => :'Object',
         :'errors' => :'Object'
       }
     end
@@ -55,8 +55,8 @@ module AmzSpApi::FeedsApiModel
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'feeds')
-        self.feeds = attributes[:'feeds']
+      if attributes.key?(:'payload')
+        self.payload = attributes[:'payload']
       end
 
       if attributes.key?(:'errors')
@@ -82,7 +82,7 @@ module AmzSpApi::FeedsApiModel
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          feeds == o.feeds &&
+          payload == o.payload &&
           errors == o.errors
     end
 
@@ -95,7 +95,7 @@ module AmzSpApi::FeedsApiModel
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [feeds, errors].hash
+      [payload, errors].hash
     end
 
     # Builds the object from hash
